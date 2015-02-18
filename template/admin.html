@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{.Title }}</title>
+    <style>
+        h1 {
+            margin: 0
+        }
+
+        label {
+            display: block;
+            float: left;
+            clear: left;
+        }
+        div.message{
+            background-color: #ccc;
+            border-radius: 5px;
+            padding: 5px;;
+        }
+    </style>
+</head>
+<body>
+<h1>Admin</h1>
+
+{{if .Message}}
+<div class="message">
+    {{.Message}}
+    <a href="{{.AHref}}">{{.AHref}}</a>
+ </div>
+{{end}}
+
+<form action="/admin" method="post">
+    <fieldset>
+        <legend>{{.Legend}}</legend>
+
+        {{range .Inputs }}
+        <label>{{.FormLabel}}
+            <input name="{{.Name}}" value="{{.Value}}"  {{.Disabled}}>
+        </label>
+
+        {{end}}
+
+    </fieldset>
+    <input type="submit" value="submit values">
+</form>
+</body>
+</html>
